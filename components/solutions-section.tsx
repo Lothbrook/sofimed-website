@@ -12,25 +12,25 @@ export default function SolutionsSection({ dict, locale }: SolutionsSectionProps
   const solutions = [
     {
       icon: Settings,
-      title: dict.solutions.automation.title,
-      description: dict.solutions.automation.description,
-      link: dict.solutions.learnMore,
+      title: dict.home.solutions.automation.title,
+      description: dict.home.solutions.automation.description,
+      link: dict.home.solutions.learnMore,
       image: "service-1.jpg",
       gradient: "from-blue-500 to-cyan-500"
     },
     {
       icon: Wrench,
-      title: dict.solutions.maintenance.title,
-      description: dict.solutions.maintenance.description,
-      link: dict.solutions.learnMore,
+      title: dict.home.solutions.maintenance.title,
+      description: dict.home.solutions.maintenance.description,
+      link: dict.home.solutions.learnMore,
       image: "service-2.jpg",
       gradient: "from-emerald-500 to-teal-500"
     },
     {
       icon: ClipboardList,
-      title: dict.solutions.projectManagement.title,
-      description: dict.solutions.projectManagement.description,
-      link: dict.solutions.learnMore,
+      title: dict.home.solutions.projectManagement.title,
+      description: dict.home.solutions.projectManagement.description,
+      link: dict.home.solutions.learnMore,
       image: "service-3.jpg",
       gradient: "from-purple-500 to-indigo-500"
     }
@@ -45,11 +45,11 @@ export default function SolutionsSection({ dict, locale }: SolutionsSectionProps
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-[#085C91] to-gray-900 bg-clip-text text-transparent mb-4">
-            {dict.solutions.title}
+            {dict.home.solutions.title}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#085C91] to-cyan-500 mx-auto mb-6 rounded-full"></div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            {dict.solutions.subtitle}
+            {dict.home.solutions.subtitle}
           </p>
         </div>
 

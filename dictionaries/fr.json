@@ -1,11 +1,75 @@
 {
     "home": {
+        "services": {
+            "title": "Nos Services",
+            "subtitle": "Des services complets pour accompagner vos projets industriels de A à Z",
+            "maintenance": {
+                "title": "Maintenance Industrielle",
+                "description": "Services de maintenance préventive et corrective pour vos équipements industriels",
+                "features": {
+                    "preventive": "Maintenance préventive",
+                    "emergency": "Dépannage d'urgence",
+                    "spareParts": "Pièces de rechange"
+                }
+            },
+            "installation": {
+                "title": "Installation & Mise en Service",
+                "description": "Installation professionnelle et mise en service de vos équipements",
+                "features": {
+                    "complete": "Installation complète",
+                    "commissioning": "Mise en service",
+                    "training": "Formation utilisateurs"
+                }
+            },
+            "consulting": {
+                "title": "Conseil & Expertise",
+                "description": "Accompagnement et conseil pour optimiser vos installations",
+                "features": {
+                    "audit": "Audit technique",
+                    "recommendations": "Recommandations",
+                    "optimization": "Optimisation"
+                }
+            },
+            "support": {
+                "title": "Support Technique",
+                "description": "Support technique disponible pour répondre à toutes vos questions",
+                "features": {
+                    "hotline": "Hotline technique",
+                    "remote": "Assistance à distance",
+                    "documentation": "Documentation"
+                }
+            },
+            "learnMore": "En savoir plus",
+            "cta": {
+                "title": "Besoin d'un service personnalisé ?",
+                "description": "Nos experts sont à votre disposition pour étudier vos besoins spécifiques.",
+                "servicesButton": "Nos services",
+                "quoteButton": "Devis"
+            }
+        },
+        "solutions": {
+            "title": "Nos Solutions",
+            "subtitle": "Afin de fiabiliser la production et d'optimiser les coûts, le groupe SOFIMED propose à ses clients industriels, des solutions spécifiques pour l'installation et la maintenance de leurs équipements.",
+            "automation": {
+                "title": "Automation industrielle",
+                "description": "Nos ingénieurs d'application, gestionnaires de compte et technico-commerciaux sont à votre disposition pour vous fournir des conseils et des recommandations techniques appropriées."
+            },
+            "maintenance": {
+                "title": "Assistance technique et maintenance",
+                "description": "Notre équipe de techniciens spécialisée et SAV sont à votre disposition 24/7 pour vous aider à installer et réparer correctement vos équipements."
+            },
+            "projectManagement": {
+                "title": "Management de projet",
+                "description": "Une équipe d'experts en Mécanique des fluides, Étude électrique, Automatisme, Instrumentation, Étude de structure et tuyauterie développent les supports de formation pour nos équipes internes et clients."
+            },
+            "learnMore": "En savoir plus"
+        },
         "title": "Accueil",
         "description": "Accueil description",
         "about": "À propos",
         "products": "Produits",
-        "services": "Services",
-        "solutions": "Solutions",
+        "servicesx": "Services",
+        "solutionsx": "Solutions",
         "catalogues": "Catalogues",
         "career": "Carrière",
         "contact": "Contact"
@@ -35,70 +99,8 @@
             "learnMore": "En savoir plus"
         }
     },
-    "services": {
-        "title": "Nos Services",
-        "subtitle": "Des services complets pour accompagner vos projets industriels de A à Z",
-        "maintenance": {
-            "title": "Maintenance Industrielle",
-            "description": "Services de maintenance préventive et corrective pour vos équipements industriels",
-            "features": {
-                "preventive": "Maintenance préventive",
-                "emergency": "Dépannage d'urgence",
-                "spareParts": "Pièces de rechange"
-            }
-        },
-        "installation": {
-            "title": "Installation & Mise en Service",
-            "description": "Installation professionnelle et mise en service de vos équipements",
-            "features": {
-                "complete": "Installation complète",
-                "commissioning": "Mise en service",
-                "training": "Formation utilisateurs"
-            }
-        },
-        "consulting": {
-            "title": "Conseil & Expertise",
-            "description": "Accompagnement et conseil pour optimiser vos installations",
-            "features": {
-                "audit": "Audit technique",
-                "recommendations": "Recommandations",
-                "optimization": "Optimisation"
-            }
-        },
-        "support": {
-            "title": "Support Technique",
-            "description": "Support technique disponible pour répondre à toutes vos questions",
-            "features": {
-                "hotline": "Hotline technique",
-                "remote": "Assistance à distance",
-                "documentation": "Documentation"
-            }
-        },
-        "learnMore": "En savoir plus",
-        "cta": {
-            "title": "Besoin d'un service personnalisé ?",
-            "description": "Nos experts sont à votre disposition pour étudier vos besoins spécifiques.",
-            "servicesButton": "Nos services",
-            "quoteButton": "Devis"
-        }
-    },
-    "solutions": {
-        "title": "Nos Solutions",
-        "subtitle": "Afin de fiabiliser la production et d'optimiser les coûts, le groupe SOFIMED propose à ses clients industriels, des solutions spécifiques pour l'installation et la maintenance de leurs équipements.",
-        "automation": {
-            "title": "Automation industrielle",
-            "description": "Nos ingénieurs d'application, gestionnaires de compte et technico-commerciaux sont à votre disposition pour vous fournir des conseils et des recommandations techniques appropriées."
-        },
-        "maintenance": {
-            "title": "Assistance technique et maintenance",
-            "description": "Notre équipe de techniciens spécialisée et SAV sont à votre disposition 24/7 pour vous aider à installer et réparer correctement vos équipements."
-        },
-        "projectManagement": {
-            "title": "Management de projet",
-            "description": "Une équipe d'experts en Mécanique des fluides, Étude électrique, Automatisme, Instrumentation, Étude de structure et tuyauterie développent les supports de formation pour nos équipes internes et clients."
-        },
-        "learnMore": "En savoir plus"
-    },
+    
+    
     "whyChooseUs": {
         "title": "Pourquoi Choisir Sofimed?",
         "subtitle": "Découvrez ce qui fait de Sofimed le partenaire idéal pour vos besoins en fournitures industrielles.",
@@ -451,255 +453,5 @@
             "loadingProducts": "Chargement des produits...",
             "pleaseWait": "Veuillez patienter"
         }
-    },
-    "contact": {
-        "hero": {
-            "title": "Contactez-Nous",
-            "subtitle": "Notre équipe est à votre disposition pour répondre à toutes vos questions"
-        },
-        "info": {
-            "title": "Nos Coordonnées"
-        },
-        "address": {
-            "title": "Adresse",
-            "street": "137, Boulevard Moulay Ismaïl - Roches Noires 20290",
-            "city": "Casablanca - Maroc"
-        },
-        "phone": {
-            "title": "Téléphone"
-        },
-        "email": {
-            "title": "Email"
-        },
-        "hours": {
-            "title": "Horaires",
-            "schedule": "Lun - Ven: 8h00 - 18h00"
-        },
-        "offices": {
-            "title": "Nos Bureaux",
-            "headquarters": {
-                "title": "Siège Social",
-                "address": "137, Boulevard Moulay Ismaïl - Roches Noires 20290"
-            },
-            "store": {
-                "title": "Magasin",
-                "address": "47 rue du Boured (roches noires) – Casablanca – Maroc"
-            }
-        },
-        "map": {
-            "title": "Nos Localisations"
-        },
-        "form": {
-            "title": "Envoyez-nous un message",
-            "subtitle": "Remplissez le formulaire ci-dessous et nous vous répondrons rapidement",
-            "firstName": "Prénom",
-            "firstNamePlaceholder": "Votre prénom",
-            "lastName": "Nom",
-            "lastNamePlaceholder": "Votre nom",
-            "email": "Email",
-            "emailPlaceholder": "votre.email@exemple.com",
-            "phone": "Téléphone",
-            "phonePlaceholder": "+212 6XX XX XX XX",
-            "company": "Entreprise",
-            "companyPlaceholder": "Nom de votre entreprise",
-            "subject": "Sujet",
-            "subjectPlaceholder": "Objet de votre message",
-            "message": "Message",
-            "messagePlaceholder": "Décrivez votre demande en détail...",
-            "submit": "Envoyer le message"
-        },
-        "faq": {
-            "title": "Questions Fréquentes",
-            "subtitle": "Trouvez rapidement les réponses à vos questions",
-            "delivery": {
-                "question": "Quels sont vos délais de livraison ?",
-                "answer": "Nos délais de livraison varient selon les produits et votre localisation. En général, comptez 2-5 jours ouvrables pour les produits en stock."
-            },
-            "maintenance": {
-                "question": "Proposez-vous des services de maintenance ?",
-                "answer": "Oui, nous proposons des contrats de maintenance préventive et corrective pour tous nos équipements."
-            },
-            "quote": {
-                "question": "Comment obtenir un devis personnalisé ?",
-                "answer": "Vous pouvez nous contacter via ce formulaire, par téléphone ou email. Nous vous répondrons sous 24h avec un devis détaillé."
-            },
-            "individuals": {
-                "question": "Travaillez-vous avec les particuliers ?",
-                "answer": "SOFIMED se concentre principalement sur le marché B2B, mais nous pouvons étudier certaines demandes de particuliers au cas par cas."
-            }
-        }
-    },
-    "services": {
-        "hero": {
-            "title": "Services",
-            "subtitle": "Obtenir des informations et des compétences pour améliorer vos opérations"
-        },
-        "intro": "Chez le groupe SOFIMED, nous avons une large gamme de services adaptés à vos besoins industriels offrant la plus haute qualité, attention et fiabilité. Notre équipe de chefs de produits et de fournisseurs associés innove en permanence, offrant une valeur constante à nos clients et contribuant à améliorer leur productivité.",
-        "customerRelations": {
-            "title": "Centre de relation clients",
-            "description": "Au fil des années, l'équipe SOFIMED s'est forgée une solide expérience dans la distribution de matériel médical et dans la maintenance des équipements médicaux.",
-            "features": [
-                "Maintenance préventive",
-                "Dépannage d'urgence",
-                "Pièces de rechange",
-                "Contrats de maintenance"
-            ]
-        },
-        "technicalSupport": {
-            "title": "Support technique S.A.V",
-            "description": "Nous avons établi des partenariats techniques avec plusieurs fabricants d'équipements médicaux et nous avons acquis une expertise dans la maintenance.",
-            "features": [
-                "Support technique 24/7",
-                "Maintenance préventive",
-                "Réparation sur site",
-                "Gestion des pièces de rechange"
-            ]
-        },
-        "professionalTraining": {
-            "title": "Formation professionnelle",
-            "description": "Une équipe de professionnels vous forme sur l'utilisation de vos équipements médicaux pour une meilleure prise en main et une utilisation optimale.",
-            "features": [
-                "Formation sur site",
-                "Documentation technique",
-                "Support continu",
-                "Certification"
-            ]
-        },
-        "designModeling": {
-            "title": "Conception & modélisations des plans",
-            "description": "Nous offrons des services de conception et de modélisation 3D pour vos projets industriels, avec une expertise technique avancée.",
-            "features": [
-                "Modélisation 3D",
-                "Plans techniques détaillés",
-                "Conception sur mesure",
-                "Validation des designs"
-            ]
-        },
-        "designEngineering": {
-            "title": "Ingénierie de conception",
-            "description": "Notre équipe d'ingénieurs vous accompagne dans la conception et le développement de solutions techniques innovantes adaptées à vos besoins.",
-            "features": [
-                "Études de faisabilité",
-                "Conception technique",
-                "Optimisation des processus",
-                "Accompagnement projet"
-            ]
-        },
-        "learnMore": "En savoir plus",
-        "completeOffer": {
-            "title": "Notre offre complète",
-            "description": "Chez le groupe SOFIMED, nous avons une large gamme de services adaptés à vos besoins industriels offrant la plus haute qualité, attention et fiabilité. Notre équipe de chefs de produits et de fournisseurs associés innove en permanence, offrant une valeur constante à nos clients et contribuant à améliorer leur productivité."
-        },
-        "completeOffers": {
-            "consulting": {
-                "title": "Conseil",
-                "description": "Notre personnel back-office hautement qualifié et formé à vos métiers vous conseille sur le choix des équipements et composants dont vous avez besoin."
-            },
-            "proximityService": {
-                "title": "Service de proximité",
-                "description": "Notre équipe de vente itinérante d'ingénieurs technico-commerciaux est à votre disposition tous les jours pour vous aider à faire le meilleur choix de produits à vos besoins."
-            },
-            "design3D": {
-                "title": "Conception plan 3D",
-                "description": "Ce service permet une visualisation immédiate d'implantation et d'accès au matériel. L'espace est mieux géré, le montage optimisé."
-            },
-            "logistics": {
-                "title": "Logistique",
-                "description": "Un stock important sur la plate-forme logistique centrale à Casablanca quartier industriel et point de vente sur Casa et Tanger pour une livraison rapide en partenariat avec des compagnies de transport national et international."
-            },
-            "qualityCommitment": {
-                "title": "Engagement qualité",
-                "description": "Notre engagement Qualité permet une adéquation complète de nos produits et services aux besoins clients. SOFIMED est certifiée ISO 9001/ ISO 14001/OHSAS 18001 et bien d'autres certificats spécifiques ATEX..."
-            },
-            "engineeringService": {
-                "title": "Service d'ingénierie",
-                "description": "Ce service réalise des études d'avant-projets afin de vérifier la faisabilité puis définir les solutions les plus adaptées à vos besoins en prenant en considération vos contraintes, budget et de planning."
-            },
-            "maintenance": {
-                "title": "Maintenance & préparation",
-                "description": "SOFIMED vous propose toutes opérations de maintenance et réparation sur ses produits en atelier ou dans vos locaux."
-            },
-            "commissioning": {
-                "title": "Mise en services",
-                "description": "Une équipe de techniciens est à votre disposition pour une assistance à l'installation, à la mise en service, à la réparation mais aussi pour l'optimisation."
-            },
-            "training": {
-                "title": "Formation",
-                "description": "SOFIMED réalise des formations produits d'entretien des équipements et installations sur site ou dans nos locaux."
-            }
-        }
-    },
-    "solutions": {
-        "title": "Nos Solutions",
-        "subtitle": "Afin de fiabiliser la production et d'optimiser les coûts, le groupe SOFIMED propose à ses clients industriels, des solutions spécifiques pour l'installation et la maintenance de leurs équipements.",
-        "hero": {
-            "title": "Nos Solutions",
-            "subtitle": "Des solutions innovantes et sur mesure pour répondre à tous vos défis industriels"
-        },
-        "distribution": {
-            "title": "Sofimed distribution",
-            "description": "Le groupe Sofimed propose différents types d'offres : offres commerciales avec des équipements et des fournitures associées innovent en permanence, offrant une valeur constante à nos clients et contribuant à améliorer leur productivité. Nos équipes de chefs de produits et de fournisseurs associés innovent en permanence, offrant une valeur constante à nos clients et contribuant à améliorer leur productivité.",
-            "features": [
-                "Équipements industriels",
-                "Fournitures spécialisées",
-                "Solutions sur mesure",
-                "Support technique"
-            ]
-        },
-        "automation": {
-            "title": "Automatisation",
-            "description": "Nos solutions d'automatisation permettent d'optimiser vos processus industriels grâce à des technologies de pointe. Nous proposons des systèmes intelligents qui améliorent l'efficacité et réduisent les coûts opérationnels.",
-            "features": [
-                "Systèmes de contrôle automatique",
-                "Capteurs intelligents",
-                "Interface homme-machine",
-                "Maintenance prédictive"
-            ]
-        },
-        "quality": {
-            "title": "Qualité",
-            "description": "Notre engagement qualité est reconnu par la certification ISO 9001. Cette certification atteste de notre capacité à fournir des produits et services conformes aux exigences de nos clients et aux réglementations applicables, tout en démontrant notre amélioration continue.",
-            "features": {
-                "certification": "Certification ISO 9001",
-                "improvement": "Amélioration continue des processus",
-                "compliance": "Conformité aux normes internationales"
-            }
-        },
-        "skids": {
-            "title": "Skids de pompage",
-            "waterPressure": {
-                "title": "Skids de surpression d'eau.",
-                "content": "Nous concevons et fabriquons des systèmes de surpression d'eau avec un débit élevé et exigence de pression suivant les normes s'adressant aux applications industrielles. Ces conception et fabrications sont livrés sous forme d'ensemble complet (pressostats, manomètres, vannes, etc....) avec pompes électriques centrifuges verticales ou horizontales en acier inoxydable, ou fonte équipées de variateurs de fréquences, automates de gestion et asservissement, collecteurs entrées-sorties groupes, réservoir de pression, carte de protection et contrôle et tous les accessoires montés sur le châssis. Vous trouverez toujours une solution avec notre équipe SOFIMED qui répond à vos besoins."
-            },
-            "gplPumping": {
-                "title": "Skids de pompage & compression GPL",
-                "content": "Nous fournissons une gamme complète de groupes de pompage et compression GPL et gaz liquéfié étudié et fabriqué dans nos ateliers à Casablanca suivant les normes en vigueur avec l'intégration de Compresseurs verticales, pompes à palettes, pompes multicellulaires à canal latéral, moteur électrique, liquid-trap ( Piège à liquide), vanne à quatre voix, tuyauterie, coffret électrique de commande ou de puissance et bien d'autres équipements et instruments de contrôle et sécurité ( pression, niveau, température ...) pour le dépotage/chargement camions-citernes et remplissage bouteilles de gaz GPL.\n\nNotre service technique étudie et propose des groupes de pompage et compression spécifiques pour des applications spéciales à la demande du client en conformité avec les normes de réglementation en vigueur."
-            },
-            "dosing": {
-                "title": "Skids de pompage, dosage & comptage",
-                "content": "Nous construisons soigneusement des skids de transfert, dosage, injection d'additifs ou comptage des fluides spécifiques avec une configuration bien adaptée aux exigences du client et normes de sécurité. Nos skids sont testés dans nos ateliers avant la livraison et l'installation."
-            }
-        },
-        "technicalAssistance": {
-            "title": "Assistance technique et maintenance",
-            "description": "SOFIMED propose à ses clients différents programmes d'assistance technique téléphonique, d'entretien correctif, préventive, des contrôles périodiques des équipements et assurent tous les dépannages sur site, une révision en atelier ou contrat d'entretien.",
-            "features": [
-                "Assistance téléphonique 24/7",
-                "Maintenance préventive et corrective",
-                "Contrôles périodiques",
-                "Dépannages sur site"
-            ]
-        },
-        "projectManagement": {
-            "title": "Management de projet",
-            "description": "Une équipe d'experts en Mécanique des fluides, Étude électrique, Automatisme, Instrumentation, Étude de structure et tuyauterie développent les supports de formation pour nos équipes internes et clients.",
-            "features": [
-                "Mécanique des fluides",
-                "Étude électrique",
-                "Automatisme et instrumentation",
-                "Étude de structure et tuyauterie"
-            ]
-        },
-        "learnMore": "En savoir plus"
     }
 }

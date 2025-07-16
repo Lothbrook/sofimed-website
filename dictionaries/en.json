@@ -1,11 +1,76 @@
 {
+    
     "home": {
+        "services": {
+            "title": "Our Services",
+            "subtitle": "Complete services to support your industrial projects from A to Z",
+            "maintenance": {
+                "title": "Industrial Maintenance",
+                "description": "Preventive and corrective maintenance services for your industrial equipment",
+                "features": {
+                    "preventive": "Preventive maintenance",
+                    "emergency": "Emergency repair",
+                    "spareParts": "Spare parts"
+                }
+            },
+            "installation": {
+                "title": "Installation & Commissioning",
+                "description": "Professional installation and commissioning of your equipment",
+                "features": {
+                    "complete": "Complete installation",
+                    "commissioning": "Commissioning",
+                    "training": "User training"
+                }
+            },
+            "consulting": {
+                "title": "Consulting & Expertise",
+                "description": "Support and advice to optimize your installations",
+                "features": {
+                    "audit": "Technical audit",
+                    "recommendations": "Recommendations",
+                    "optimization": "Optimization"
+                }
+            },
+            "support": {
+                "title": "Technical Support",
+                "description": "Technical support available to answer all your questions",
+                "features": {
+                    "hotline": "Technical hotline",
+                    "remote": "Remote assistance",
+                    "documentation": "Documentation"
+                }
+            },
+            "learnMore": "Learn more",
+            "cta": {
+                "title": "Need a personalized service?",
+                "description": "Our experts are at your disposal to study your specific needs.",
+                "servicesButton": "Our services",
+                "quoteButton": "Quote"
+            }
+        },
+        "solutions": {
+            "title": "Our Solutions",
+            "subtitle": "To ensure production reliability and optimize costs, the SOFIMED group offers its industrial clients specific solutions for the installation and maintenance of their equipment.",
+            "automation": {
+                "title": "Industrial Automation",
+                "description": "Our application engineers, account managers and technical sales representatives are at your disposal to provide you with appropriate advice and technical recommendations."
+            },
+            "maintenance": {
+                "title": "Technical Assistance and Maintenance",
+                "description": "Our specialized technical team and after-sales service are at your disposal 24/7 to help you properly install and repair your equipment."
+            },
+            "projectManagement": {
+                "title": "Project Management",
+                "description": "A team of experts in Fluid Mechanics, Electrical Studies, Automation, Instrumentation, Structural and Piping Studies develop training materials for our internal teams and clients."
+            },
+            "learnMore": "Learn more"
+        },
         "title": "Home",
         "description": "Home description",
         "about": "About",
         "products": "Products",
-        "services": "Services",
-        "solutions": "Solutions",
+        "servicesx": "Services",
+        "solutionsx": "Solutions",
         "catalogues": "Catalogues",
         "career": "Career",
         "contact": "Contact"
@@ -35,70 +100,8 @@
             "learnMore": "Learn more"
         }
     },
-    "services": {
-        "title": "Our Services",
-        "subtitle": "Complete services to support your industrial projects from A to Z",
-        "maintenance": {
-            "title": "Industrial Maintenance",
-            "description": "Preventive and corrective maintenance services for your industrial equipment",
-            "features": {
-                "preventive": "Preventive maintenance",
-                "emergency": "Emergency repair",
-                "spareParts": "Spare parts"
-            }
-        },
-        "installation": {
-            "title": "Installation & Commissioning",
-            "description": "Professional installation and commissioning of your equipment",
-            "features": {
-                "complete": "Complete installation",
-                "commissioning": "Commissioning",
-                "training": "User training"
-            }
-        },
-        "consulting": {
-            "title": "Consulting & Expertise",
-            "description": "Support and advice to optimize your installations",
-            "features": {
-                "audit": "Technical audit",
-                "recommendations": "Recommendations",
-                "optimization": "Optimization"
-            }
-        },
-        "support": {
-            "title": "Technical Support",
-            "description": "Technical support available to answer all your questions",
-            "features": {
-                "hotline": "Technical hotline",
-                "remote": "Remote assistance",
-                "documentation": "Documentation"
-            }
-        },
-        "learnMore": "Learn more",
-        "cta": {
-            "title": "Need a personalized service?",
-            "description": "Our experts are at your disposal to study your specific needs.",
-            "servicesButton": "Our services",
-            "quoteButton": "Quote"
-        }
-    },
-    "solutions": {
-        "title": "Our Solutions",
-        "subtitle": "To ensure production reliability and optimize costs, the SOFIMED group offers its industrial clients specific solutions for the installation and maintenance of their equipment.",
-        "automation": {
-            "title": "Industrial Automation",
-            "description": "Our application engineers, account managers and technical sales representatives are at your disposal to provide you with appropriate advice and technical recommendations."
-        },
-        "maintenance": {
-            "title": "Technical Assistance and Maintenance",
-            "description": "Our specialized technical team and after-sales service are at your disposal 24/7 to help you properly install and repair your equipment."
-        },
-        "projectManagement": {
-            "title": "Project Management",
-            "description": "A team of experts in Fluid Mechanics, Electrical Studies, Automation, Instrumentation, Structural and Piping Studies develop training materials for our internal teams and clients."
-        },
-        "learnMore": "Learn more"
-    },
+    
+    
     "whyChooseUs": {
         "title": "Why Choose Sofimed?",
         "subtitle": "Discover what makes Sofimed the ideal partner for your industrial supply needs.",
@@ -451,255 +454,5 @@
             "loadingProducts": "Loading products...",
             "pleaseWait": "Please wait"
         }
-    },
-     "contact": {
-        "hero": {
-            "title": "Contact Us",
-            "subtitle": "Our team is at your disposal to answer all your questions"
-        },
-        "info": {
-            "title": "Our Contact Information"
-        },
-        "address": {
-            "title": "Address",
-            "street": "137, Boulevard Moulay Ismaïl - Roches Noires 20290",
-            "city": "Casablanca - Morocco"
-        },
-        "phone": {
-            "title": "Phone"
-        },
-        "email": {
-            "title": "Email"
-        },
-        "hours": {
-            "title": "Hours",
-            "schedule": "Mon - Fri: 8:00 AM - 6:00 PM"
-        },
-        "offices": {
-            "title": "Our Offices",
-            "headquarters": {
-                "title": "Headquarters",
-                "address": "137, Boulevard Moulay Ismaïl - Roches Noires 20290"
-            },
-            "store": {
-                "title": "Store",
-                "address": "47 rue du Boured (roches noires) – Casablanca – Morocco"
-            }
-        },
-        "map": {
-            "title": "Our Locations"
-        },
-        "form": {
-            "title": "Send us a message",
-            "subtitle": "Fill out the form below and we will respond quickly",
-            "firstName": "First Name",
-            "firstNamePlaceholder": "Your first name",
-            "lastName": "Last Name",
-            "lastNamePlaceholder": "Your last name",
-            "email": "Email",
-            "emailPlaceholder": "your.email@example.com",
-            "phone": "Phone",
-            "phonePlaceholder": "+212 6XX XX XX XX",
-            "company": "Company",
-            "companyPlaceholder": "Your company name",
-            "subject": "Subject",
-            "subjectPlaceholder": "Subject of your message",
-            "message": "Message",
-            "messagePlaceholder": "Describe your request in detail...",
-            "submit": "Send message"
-        },
-        "faq": {
-            "title": "Frequently Asked Questions",
-            "subtitle": "Quickly find answers to your questions",
-            "delivery": {
-                "question": "What are your delivery times?",
-                "answer": "Our delivery times vary depending on products and your location. Generally, allow 2-5 business days for products in stock."
-            },
-            "maintenance": {
-                "question": "Do you offer maintenance services?",
-                "answer": "Yes, we offer preventive and corrective maintenance contracts for all our equipment."
-            },
-            "quote": {
-                "question": "How to get a personalized quote?",
-                "answer": "You can contact us via this form, by phone or email. We will respond within 24 hours with a detailed quote."
-            },
-            "individuals": {
-                "question": "Do you work with individuals?",
-                "answer": "SOFIMED focuses primarily on the B2B market, but we can consider certain individual requests on a case-by-case basis."
-            }
-        }
-    },
-    "services": {
-    "hero": {
-        "title": "Services",
-        "subtitle": "Get information and skills to improve your operations"
-    },
-    "intro": "At the SOFIMED group, we have a wide range of services adapted to your industrial needs offering the highest quality, attention and reliability. Our team of product managers and associated suppliers constantly innovates, offering constant value to our customers and helping to improve their productivity.",
-    "customerRelations": {
-        "title": "Customer Relations Center",
-        "description": "Over the years, the SOFIMED team has built solid experience in the distribution of medical equipment and in the maintenance of medical equipment.",
-        "features": [
-            "Preventive maintenance",
-            "Emergency repair",
-            "Spare parts",
-            "Maintenance contracts"
-        ]
-    },
-    "technicalSupport": {
-        "title": "Technical Support S.A.V",
-        "description": "We have established technical partnerships with several medical equipment manufacturers and we have acquired expertise in maintenance.",
-        "features": [
-            "24/7 technical support",
-            "Preventive maintenance",
-            "On-site repair",
-            "Spare parts management"
-        ]
-    },
-    "professionalTraining": {
-        "title": "Professional Training",
-        "description": "A team of professionals trains you on the use of your medical equipment for better handling and optimal use.",
-        "features": [
-            "On-site training",
-            "Technical documentation",
-            "Continuous support",
-            "Certification"
-        ]
-    },
-    "designModeling": {
-        "title": "Design & Plan Modeling",
-        "description": "We offer design and 3D modeling services for your industrial projects, with advanced technical expertise.",
-        "features": [
-            "3D modeling",
-            "Detailed technical plans",
-            "Custom design",
-            "Design validation"
-        ]
-    },
-    "designEngineering": {
-        "title": "Design Engineering",
-        "description": "Our team of engineers supports you in the design and development of innovative technical solutions adapted to your needs.",
-        "features": [
-            "Feasibility studies",
-            "Technical design",
-            "Process optimization",
-            "Project support"
-        ]
-    },
-    "learnMore": "Learn more",
-    "completeOffer": {
-        "title": "Our Complete Offer",
-        "description": "At the SOFIMED group, we have a wide range of services adapted to your industrial needs offering the highest quality, attention and reliability. Our team of product managers and associated suppliers constantly innovates, offering constant value to our customers and helping to improve their productivity."
-    },
-    "completeOffers": {
-        "consulting": {
-            "title": "Consulting",
-            "description": "Our highly qualified back-office staff, trained in your trades, advises you on the choice of equipment and components you need."
-        },
-        "proximityService": {
-            "title": "Proximity Service",
-            "description": "Our traveling sales team of technical-commercial engineers is at your disposal every day to help you make the best choice of products for your needs."
-        },
-        "design3D": {
-            "title": "3D Plan Design",
-            "description": "This service allows immediate visualization of installation and access to equipment. Space is better managed, assembly optimized."
-        },
-        "logistics": {
-            "title": "Logistics",
-            "description": "A large stock on the central logistics platform in Casablanca industrial district and point of sale in Casa and Tangier for fast delivery in partnership with national and international transport companies."
-        },
-        "qualityCommitment": {
-            "title": "Quality Commitment",
-            "description": "Our Quality commitment allows complete adequacy of our products and services to customer needs. SOFIMED is certified ISO 9001/ ISO 14001/OHSAS 18001 and many other specific ATEX certificates..."
-        },
-        "engineeringService": {
-            "title": "Engineering Service",
-            "description": "This service carries out pre-project studies to verify feasibility and then define the solutions best suited to your needs taking into consideration your constraints, budget and schedule."
-        },
-        "maintenance": {
-            "title": "Maintenance & Preparation",
-            "description": "SOFIMED offers you all maintenance and repair operations on its products in the workshop or in your premises."
-        },
-        "commissioning": {
-            "title": "Commissioning",
-            "description": "A team of technicians is at your disposal for assistance with installation, commissioning, repair but also for optimization."
-        },
-        "training": {
-            "title": "Training",
-            "description": "SOFIMED provides product training for equipment and installation maintenance on site or in our premises."
-        }
     }
-    },
-    "solutions": {
-    "title": "Our Solutions",
-    "subtitle": "To ensure production reliability and optimize costs, the SOFIMED group offers its industrial clients specific solutions for the installation and maintenance of their equipment.",
-    "hero": {
-        "title": "Our Solutions",
-        "subtitle": "Innovative and customized solutions to meet all your industrial challenges"
-    },
-    "distribution": {
-        "title": "Sofimed Distribution",
-        "description": "The Sofimed group offers different types of offers: commercial offers with equipment and associated supplies that constantly innovate, providing constant value to our customers and helping to improve their productivity. Our product manager teams and associated suppliers constantly innovate, providing constant value to our customers and helping to improve their productivity.",
-        "features": [
-            "Industrial Equipment",
-            "Specialized Supplies",
-            "Custom Solutions",
-            "Technical Support"
-        ]
-    },
-    "automation": {
-        "title": "Automation",
-        "description": "Our automation solutions optimize your industrial processes through cutting-edge technologies. We offer intelligent systems that improve efficiency and reduce operational costs.",
-        "features": [
-            "Automatic Control Systems",
-            "Smart Sensors",
-            "Human-Machine Interface",
-            "Predictive Maintenance"
-        ]
-    },
-    "quality": {
-        "title": "Quality",
-        "description": "Our quality commitment is recognized by ISO 9001 certification. This certification attests to our ability to provide products and services that comply with our customers' requirements and applicable regulations, while demonstrating our continuous improvement.",
-        "features": {
-            "certification": "ISO 9001 Certification",
-            "improvement": "Continuous Process Improvement",
-            "compliance": "Compliance with International Standards"
-        }
-    },
-    "skids": {
-        "title": "Pumping Skids",
-        "waterPressure": {
-            "title": "Water Pressure Boosting Skids",
-            "content": "We design and manufacture water pressure boosting systems with high flow rates and pressure requirements according to standards for industrial applications. These designs and manufactures are delivered as complete assemblies (pressure switches, gauges, valves, etc.) with vertical or horizontal centrifugal electric pumps in stainless steel or cast iron equipped with frequency drives, management and control automation, group inlet-outlet manifolds, pressure tank, protection and control card and all accessories mounted on the chassis. You will always find a solution with our SOFIMED team that meets your needs."
-        },
-        "gplPumping": {
-            "title": "LPG Pumping & Compression Skids",
-            "content": "We provide a complete range of LPG and liquefied gas pumping and compression units designed and manufactured in our workshops in Casablanca according to current standards with the integration of vertical compressors, vane pumps, side channel multicellular pumps, electric motor, liquid-trap, four-way valve, piping, electrical control or power cabinet and many other control and safety equipment and instruments (pressure, level, temperature...) for tank truck unloading/loading and LPG gas bottle filling.\n\nOur technical service studies and proposes specific pumping and compression units for special applications at the customer's request in compliance with current regulatory standards."
-        },
-        "dosing": {
-            "title": "Pumping, Dosing & Metering Skids",
-            "content": "We carefully build transfer, dosing, additive injection or specific fluid metering skids with a configuration well adapted to customer requirements and safety standards. Our skids are tested in our workshops before delivery and installation."
-        }
-    },
-    "technicalAssistance": {
-        "title": "Technical Assistance and Maintenance",
-        "description": "SOFIMED offers its customers various telephone technical assistance programs, corrective and preventive maintenance, periodic equipment checks and ensures all on-site troubleshooting, workshop overhaul or maintenance contracts.",
-        "features": [
-            "24/7 Phone Assistance",
-            "Preventive and Corrective Maintenance",
-            "Periodic Inspections",
-            "On-site Troubleshooting"
-        ]
-    },
-    "projectManagement": {
-        "title": "Project Management",
-        "description": "A team of experts in Fluid Mechanics, Electrical Studies, Automation, Instrumentation, Structural and Piping Studies develop training materials for our internal teams and clients.",
-        "features": [
-            "Fluid Mechanics",
-            "Electrical Studies",
-            "Automation and Instrumentation",
-            "Structural and Piping Studies"
-        ]
-    },
-    "learnMore": "Learn more"
-}
 }

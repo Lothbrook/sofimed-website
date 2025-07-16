@@ -12,45 +12,45 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
   const services = [
     {
       icon: Wrench,
-      title: dict.services.maintenance.title,
-      description: dict.services.maintenance.description,
+      title: dict.home.services.maintenance.title,
+      description: dict.home.services.maintenance.description,
       features: [
-        dict.services.maintenance.features.preventive,
-        dict.services.maintenance.features.emergency,
-        dict.services.maintenance.features.spareParts
+        dict.home.services.maintenance.features.preventive,
+        dict.home.services.maintenance.features.emergency,
+        dict.home.services.maintenance.features.spareParts
       ],
       color: "#085C91",
     },
     {
       icon: Settings,
-      title: dict.services.installation.title,
-      description: dict.services.installation.description,
+      title: dict.home.services.installation.title,
+      description: dict.home.services.installation.description,
       features: [
-        dict.services.installation.features.complete,
-        dict.services.installation.features.commissioning,
-        dict.services.installation.features.training
+        dict.home.services.installation.features.complete,
+        dict.home.services.installation.features.commissioning,
+        dict.home.services.installation.features.training
       ],
       color: "#085C91",
     },
     {
       icon: Users,
-      title: dict.services.consulting.title,
-      description: dict.services.consulting.description,
+      title: dict.home.services.consulting.title,
+      description: dict.home.services.consulting.description,
       features: [
-        dict.services.consulting.features.audit,
-        dict.services.consulting.features.recommendations,
-        dict.services.consulting.features.optimization
+        dict.home.services.consulting.features.audit,
+        dict.home.services.consulting.features.recommendations,
+        dict.home.services.consulting.features.optimization
       ],
       color: "#085C91",
     },
     {
       icon: Phone,
-      title: dict.services.support.title,
-      description: dict.services.support.description,
+      title: dict.home.services.support.title,
+      description: dict.home.services.support.description,
       features: [
-        dict.services.support.features.hotline,
-        dict.services.support.features.remote,
-        dict.services.support.features.documentation
+        dict.home.services.support.features.hotline,
+        dict.home.services.support.features.remote,
+        dict.home.services.support.features.documentation
       ],
       color: "#085C91",
     },
@@ -68,12 +68,12 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
         <div className="text-center mb-16">
           <div className="inline-block">
             <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-[#085C91] to-gray-900 bg-clip-text text-transparent mb-4">
-              {dict.services.title}
+              {dict.home.services.title}
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[#085C91] to-cyan-500 mx-auto mb-6 rounded-full"></div>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            {dict.services.subtitle}
+            {dict.home.services.subtitle}
           </p>
         </div>
 
@@ -112,7 +112,7 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
                     className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-medium text-[#085C91] bg-transparent border-2 border-[#085C91] rounded-xl"
                   >
                     <span className="flex items-center">
-                      {dict.services.learnMore}
+                      {dict.home.services.learnMore}
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </span>
                   </Link>
@@ -127,10 +127,10 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 relative z-10">
               <div className="text-left flex-1">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  {dict.services.cta.title}
+                  {dict.home.services.cta.title}
                 </h3>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  {dict.services.cta.description}
+                  {dict.home.services.cta.description}
                 </p>
               </div>
               <div className="flex flex-row gap-4 flex-shrink-0">
@@ -140,7 +140,7 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
                   asChild
                 >
                   <Link href={`/${locale}/services`}>
-                    {dict.services.cta.servicesButton}
+                    {dict.home.services.cta.servicesButton}
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
@@ -150,7 +150,7 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
                   className="border-2 border-[#085C91] text-[#085C91] hover:bg-[#085C91] hover:text-white whitespace-nowrap px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-xl"
                   asChild
                 >
-                  <Link href={`/${locale}/contact`}>{dict.services.cta.quoteButton}</Link>
+                  <Link href={`/${locale}/contact`}>{dict.home.services.cta.quoteButton}</Link>
                 </Button>
               </div>
             </div>
