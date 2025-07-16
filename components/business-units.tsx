@@ -24,7 +24,7 @@ export default function BusinessUnits({ dict }: { dict: any }) {
           <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
             <div className="relative h-64">
               <Image
-                src="/images/hertz-scaled.jpg"
+                src="/images/metal-work-scaled.jpg"
                 alt="BU FIT"
                 fill
                 className="object-cover"
@@ -71,7 +71,7 @@ export default function BusinessUnits({ dict }: { dict: any }) {
           <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
             <div className="relative h-64">
               <Image
-                src="/images/metal-work-scaled.jpg"
+                src="/images/hertz-scaled.jpg"
                 alt="Projets industriels"
                 fill
                 className="object-cover"
