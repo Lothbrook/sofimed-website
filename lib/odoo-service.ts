@@ -374,10 +374,10 @@ export class OdooService {
 // Factory function pour créer une instance du service
 export function createOdooService(): OdooService {
   const config: OdooConfig = {
-    url: process.env.ODOO_URL!,
-    db: process.env.ODOO_DB!,
-    username: process.env.ODOO_USERNAME!,
-    password: process.env.ODOO_PASSWORD!
+    url: 'https://sys.sofimedmaroc.com',
+    db: 'sofimed2',
+    username: 'o.benzouina',
+    password: 'sYE6#zojyH'
   }
   
   return new OdooService(config)
