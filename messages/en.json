@@ -1,0 +1,45 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "solutions": "Solutions",
+    "products": "Products",
+    "catalogs": "Catalogs",
+    "career": "Career",
+    "contact": "Contact",
+    "admin": "Administration"
+  },
+  "hero": {
+    "title": "Your trusted partner for industrial supplies",
+    "subtitle": "SOFIMED supports you in all your industrial projects with innovative solutions and quality service for over 15 years.",
+    "cta": "Discover our services",
+    "contact": "Contact us"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Complete solutions for all your industrial needs",
+    "maintenance": {
+      "title": "Customer Relations Center",
+      "description": "Over the years, the SOFIMED team has built solid experience in the distribution of medical equipment and in the maintenance of medical equipment.",
+      "features": ["Preventive maintenance", "Emergency repair", "Spare parts", "Maintenance contracts"]
+    }
+  },
+  "footer": {
+    "company": "Company",
+    "services": "Services",
+    "contact": "Contact",
+    "followUs": "Follow us",
+    "rights": "All rights reserved"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "search": "Search"
+  }
+}
