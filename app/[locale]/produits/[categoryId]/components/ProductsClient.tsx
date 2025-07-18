@@ -1,14 +1,16 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Search, ArrowLeft, Package, Euro, CheckCircle, XCircle, BarChart3, Loader2 } from "lucide-react"
+import { Search, ArrowLeft, Package, CheckCircle, XCircle, BarChart3, ChevronLeft, ChevronRight, Loader2 } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import Image from 'next/image'
 
 interface Product {
   id: number
@@ -33,7 +35,6 @@ interface ProductsClientProps {
   category: Category
   initialProducts: Product[]
   subCategories: Category[]
-  // params: { categoryId: string; locale: string } // Supprimer cette ligne
   dict: any
 }
 
@@ -41,116 +42,49 @@ export default function ProductsClient({
   category, 
   initialProducts, 
   subCategories, 
-  // params, // Supprimer cette prop
   dict
 }: ProductsClientProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState('name')
   const [filterStock, setFilterStock] = useState('all')
-  const [selectedSubCategory, setSelectedSubCategory] = useState('all')
-  const [internalLoading, setInternalLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isMounted, setIsMounted] = useState(false)
+  const [productsPerPage] = useState(12)
   
   const params = useParams()
   
-  // Simuler un délai de chargement initial
+  // S'assurer que le composant est monté côté client
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+  
+  // Gestion du chargement
   useEffect(() => {
     const timer = setTimeout(() => {
-      setInternalLoading(false)
-    }, 200)
+      setIsLoading(false)
+    }, 2000) // Délai pour voir la roulette
     return () => clearTimeout(timer)
   }, [])
   
-  // Composant Skeleton pour les statistiques
-  const StatsSkeleton = () => (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-      {[...Array(4)].map((_, index) => (
-        <Card key={index}>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div className="flex-1">
-                <div className="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-                <div className="h-8 bg-gray-200 rounded animate-pulse"></div>
-              </div>
-              <div className="h-8 w-8 bg-gray-200 rounded animate-pulse"></div>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  )
+  // Fonction pour obtenir l'image avec le logo par défaut
+  const getImageSrc = (product: Product): string => {
+    if (!product.image) {
+      return '/images/sofimed-logo.png'
+    }
+    
+    if (product.image.startsWith('data:image/')) {
+      return product.image
+    }
+    
+    if (product.image.startsWith('http') || product.image.startsWith('/')) {
+      return product.image
+    }
+    
+    return `data:image/jpeg;base64,${product.image}`
+  }
   
-  // Composant Skeleton pour les filtres
-  const FiltersSkeleton = () => (
-    <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        {[...Array(5)].map((_, index) => (
-          <div key={index} className="h-10 bg-gray-200 rounded animate-pulse"></div>
-        ))}
-      </div>
-      <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-        <div className="flex items-center space-x-4">
-          <div className="h-4 w-32 bg-gray-200 rounded animate-pulse"></div>
-          <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
-        </div>
-        <div className="h-6 w-20 bg-gray-200 rounded animate-pulse"></div>
-      </div>
-    </div>
-  )
-  
-  // Composant Skeleton pour les produits
-  const ProductsSkeleton = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {[...Array(8)].map((_, index) => (
-        <Card key={index} className="overflow-hidden bg-white h-full flex flex-col">
-          <CardContent className="p-0 flex flex-col h-full">
-            <div className="h-56 w-full bg-gray-200 animate-pulse"></div>
-            <div className="p-6 flex-1 flex flex-col">
-              <div className="mb-4">
-                <div className="h-6 bg-gray-200 rounded mb-2 animate-pulse"></div>
-                <div className="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-                <div className="h-3 bg-gray-200 rounded animate-pulse"></div>
-              </div>
-              <div className="flex-1">
-                <div className="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-                <div className="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-                <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-              </div>
-              <div className="mt-auto">
-                <div className="h-6 bg-gray-200 rounded mb-4 animate-pulse"></div>
-                <div className="h-10 bg-gray-200 rounded animate-pulse"></div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  )
-  
-  // Composant de loading complet
-  const LoadingSpinner = () => (
-    <section className="container mx-auto px-4 py-12">
-      {/* Breadcrumb Skeleton */}
-      <div className="mb-8">
-        <div className="h-6 w-48 bg-gray-200 rounded mb-4 animate-pulse"></div>
-        <div className="flex items-center space-x-2">
-          <div className="h-4 w-20 bg-gray-200 rounded animate-pulse"></div>
-          <div className="h-4 w-4 bg-gray-200 rounded animate-pulse"></div>
-          <div className="h-4 w-32 bg-gray-200 rounded animate-pulse"></div>
-        </div>
-      </div>
-      
-      {/* Stats Skeleton */}
-      <StatsSkeleton />
-      
-      {/* Filters Skeleton */}
-      <FiltersSkeleton />
-      
-      {/* Products Skeleton */}
-      <ProductsSkeleton />
-    </section>
-  )
-
-  // Filtrer et trier les produits avec useMemo pour optimiser les performances
+  // Filtrer et trier les produits (suppression du filtre par sous-catégorie)
   const filteredProducts = useMemo(() => {
     let filtered = initialProducts.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -160,21 +94,13 @@ export default function ProductsClient({
                           (filterStock === 'in-stock' && product.qty_available > 0) ||
                           (filterStock === 'out-of-stock' && product.qty_available <= 0)
       
-      const matchesSubCategory = selectedSubCategory === 'all' ||
-                                product.categ_id[0] === parseInt(selectedSubCategory)
-      
-      return matchesSearch && matchesStock && matchesSubCategory
+      return matchesSearch && matchesStock
     })
     
-    // Trier les produits
     filtered.sort((a, b) => {
       switch (sortBy) {
         case 'name':
           return a.name.localeCompare(b.name)
-        case 'price-asc':
-          return a.list_price - b.list_price
-        case 'price-desc':
-          return b.list_price - a.list_price
         case 'stock':
           return b.qty_available - a.qty_available
         default:
@@ -183,81 +109,200 @@ export default function ProductsClient({
     })
     
     return filtered
-  }, [initialProducts, searchTerm, sortBy, filterStock, selectedSubCategory])
+  }, [initialProducts, searchTerm, sortBy, filterStock])
+
+  // Calculer la pagination
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage)
+  const startIndex = (currentPage - 1) * productsPerPage
+  const endIndex = startIndex + productsPerPage
+  const currentProducts = filteredProducts.slice(startIndex, endIndex)
+
+  // Réinitialiser la page quand les filtres changent
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchTerm, sortBy, filterStock])
+
+  // Calculer les statistiques
+  const totalProducts = initialProducts.length
+  const inStockProducts = initialProducts.filter(p => p.qty_available > 0).length
+  const outOfStockProducts = totalProducts - inStockProducts
+
+  // Composant de pagination
+  const Pagination = () => {
+    const getPageNumbers = () => {
+      const pages = []
+      const maxVisiblePages = 5
+      
+      if (totalPages <= maxVisiblePages) {
+        for (let i = 1; i <= totalPages; i++) {
+          pages.push(i)
+        }
+      } else {
+        if (currentPage <= 3) {
+          for (let i = 1; i <= 4; i++) pages.push(i)
+          pages.push('...')
+          pages.push(totalPages)
+        } else if (currentPage >= totalPages - 2) {
+          pages.push(1)
+          pages.push('...')
+          for (let i = totalPages - 3; i <= totalPages; i++) pages.push(i)
+        } else {
+          pages.push(1)
+          pages.push('...')
+          for (let i = currentPage - 1; i <= currentPage + 1; i++) pages.push(i)
+          pages.push('...')
+          pages.push(totalPages)
+        }
+      }
+      
+      return pages
+    }
+
+    return (
+      <div className="flex items-center justify-center space-x-2 mt-8">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          <ChevronLeft className="h-4 w-4" />
+          Précédent
+        </Button>
+        
+        {getPageNumbers().map((page, index) => (
+          <Button
+            key={index}
+            variant={page === currentPage ? "default" : "outline"}
+            size="sm"
+            onClick={() => typeof page === 'number' && setCurrentPage(page)}
+            disabled={page === '...'}
+            className={page === currentPage ? "bg-[#085C91] hover:bg-blue-700" : ""}
+          >
+            {page}
+          </Button>
+        ))}
+        
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          Suivant
+          <ChevronRight className="h-4 w-4" />
+        </Button>
+      </div>
+    )
+  }
+
+  // Écran de chargement avec portail
+  const LoadingScreen = () => {
+    if (!isMounted) return null
+    
+    return createPortal(
+      <div className="fixed inset-0 bg-white z-[99999] flex items-center justify-center">
+        <div className="text-center">
+          {/* Roulette de chargement principale */}
+          <div className="relative mb-8">
+            <div className="w-24 h-24 border-4 border-gray-200 border-t-[#085C91] rounded-full animate-spin mx-auto"></div>
+            <div className="absolute inset-0 w-24 h-24 border-4 border-transparent border-r-blue-300 rounded-full animate-spin mx-auto" style={{animationDirection: 'reverse', animationDuration: '1.5s'}}></div>
+          </div>
+          
+          {/* Logo Sofimed */}
+          <div className="w-20 h-20 mx-auto mb-6 relative">
+            <Image 
+              src="/images/sofimed-logo.png" 
+              alt="Sofimed Logo" 
+              fill
+              className="object-contain"
+            />
+          </div>
+          
+          {/* Texte de chargement */}
+          <h2 className="text-3xl font-bold text-gray-800 mb-3">Chargement des produits</h2>
+          <p className="text-gray-600 mb-8 text-lg">Veuillez patienter...</p>
+          
+          {/* Points animés */}
+          <div className="flex justify-center space-x-2 mb-8">
+            <div className="w-4 h-4 bg-[#085C91] rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+            <div className="w-4 h-4 bg-[#085C91] rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+            <div className="w-4 h-4 bg-[#085C91] rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+          </div>
+          
+          {/* Barre de progression simulée */}
+          <div className="w-80 h-3 bg-gray-200 rounded-full mx-auto overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-[#085C91] to-blue-400 rounded-full animate-pulse transition-all duration-1000" style={{width: '75%'}}></div>
+          </div>
+          
+          {/* Message additionnel */}
+          <p className="text-sm text-gray-500 mt-6">Préparation de votre catalogue...</p>
+        </div>
+      </div>,
+      document.body
+    )
+  }
 
   return (
-    <section className="container mx-auto px-4 py-12 min-h-screen">
-      {internalLoading ? (
-        <LoadingSpinner />
-      ) : (
-        <>
-          {/* Breadcrumb et retour */}
+    <>
+      {/* Écran de chargement en portail */}
+      {isLoading && <LoadingScreen />}
+      
+      {/* Contenu principal */}
+      <div className="w-full bg-gray-50 min-h-screen">
+        <section className="container mx-auto px-4 py-12">
+          {/* Breadcrumb et retour (suppression des sous-catégories) */}
           <div className="mb-8">
             <Link 
               href={`/${params.locale}/produits`}
               className="inline-flex items-center text-[#085C91] hover:text-blue-700 transition-colors mb-4"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              {dict.products.categoryPage.backToCategories}
+              {dict?.navigation?.backToCategories || 'Retour aux catégories'}
             </Link>
             
-            <div className="flex items-center text-sm text-gray-500">
+            {/* Breadcrumb simplifié */}
+            <nav className="flex items-center space-x-2 text-sm text-gray-600">
               <Link href={`/${params.locale}/produits`} className="hover:text-[#085C91]">
-                {dict.products.categories.title}
+                {dict?.navigation?.products || 'Produits'}
               </Link>
-              <span className="mx-2">/</span>
-              <span className="text-gray-800 font-medium">{category.name}</span>
-            </div>
+              <span>/</span>
+              <span className="text-gray-900 font-medium">{category.name}</span>
+            </nav>
           </div>
 
           {/* Statistiques */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <Card>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Card className="bg-white shadow-md hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">{dict.products.categoryPage.totalProducts}</p>
-                    <p className="text-2xl font-bold text-blue-600">{initialProducts.length}</p>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-600 mb-1">Total Produits</p>
+                    <p className="text-2xl font-bold text-gray-900">{totalProducts}</p>
                   </div>
-                  <Package className="h-8 w-8 text-blue-600" />
+                  <Package className="h-8 w-8 text-[#085C91]" />
                 </div>
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="bg-white shadow-md hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">{dict.products.categoryPage.subCategories}</p>
-                    <p className="text-2xl font-bold text-green-600">{subCategories.length}</p>
-                  </div>
-                  <BarChart3 className="h-8 w-8 text-green-600" />
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">{dict.products.categoryPage.inStock}</p>
-                    <p className="text-2xl font-bold text-green-600">
-                      {initialProducts.filter(p => p.qty_available > 0).length}
-                    </p>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-600 mb-1">En Stock</p>
+                    <p className="text-2xl font-bold text-green-600">{inStockProducts}</p>
                   </div>
                   <CheckCircle className="h-8 w-8 text-green-600" />
                 </div>
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="bg-white shadow-md hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">{dict.products.categoryPage.outOfStock}</p>
-                    <p className="text-2xl font-bold text-red-600">
-                      {initialProducts.filter(p => p.qty_available <= 0).length}
-                    </p>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-600 mb-1">Rupture</p>
+                    <p className="text-2xl font-bold text-red-600">{outOfStockProducts}</p>
                   </div>
                   <XCircle className="h-8 w-8 text-red-600" />
                 </div>
@@ -265,208 +310,173 @@ export default function ProductsClient({
             </Card>
           </div>
 
-          {/* Filtres et recherche */}
+          {/* Filtres et recherche (suppression du filtre par sous-catégorie) */}
           <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-              {/* Barre de recherche */}
-              <div className="md:col-span-2">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                  <Input
-                    type="text"
-                    placeholder={dict.products.categoryPage.searchPlaceholder}
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 border-gray-200 focus:ring-2 focus:ring-[#085C91] focus:border-transparent"
-                  />
-                </div>
-              </div>
-              
-              {/* Filtre par sous-catégorie */}
-              <div>
-                <Select value={selectedSubCategory} onValueChange={setSelectedSubCategory}>
-                  <SelectTrigger className="border-gray-200">
-                    <SelectValue placeholder={dict.products.categoryPage.allSubCategories} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">{dict.products.categoryPage.allSubCategories}</SelectItem>
-                    {subCategories.map((subCat) => (
-                      <SelectItem key={subCat.id} value={subCat.id.toString()}>
-                        {subCat.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              {/* Recherche */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <Input
+                  placeholder="Rechercher un produit..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10"
+                />
               </div>
               
               {/* Tri */}
-              <div>
-                <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="border-gray-200">
-                    <SelectValue placeholder={dict.products.categoryPage.sortBy} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="name">{dict.products.categoryPage.nameAZ}</SelectItem>
-                    <SelectItem value="price-asc">{dict.products.categoryPage.priceAsc}</SelectItem>
-                    <SelectItem value="price-desc">{dict.products.categoryPage.priceDesc}</SelectItem>
-                    <SelectItem value="stock">{dict.products.categoryPage.stockAvailable}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Trier par" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="name">Nom A-Z</SelectItem>
+                  <SelectItem value="stock">Stock</SelectItem>
+                </SelectContent>
+              </Select>
               
               {/* Filtre stock */}
-              <div>
-                <Select value={filterStock} onValueChange={setFilterStock}>
-                  <SelectTrigger className="border-gray-200">
-                    <SelectValue placeholder={dict.products.categoryPage.filterBy} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">{dict.products.categoryPage.allProducts}</SelectItem>
-                    <SelectItem value="in-stock">{dict.products.categoryPage.inStockOnly}</SelectItem>
-                    <SelectItem value="out-of-stock">{dict.products.categoryPage.outOfStockOnly}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <Select value={filterStock} onValueChange={setFilterStock}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Stock" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Tous</SelectItem>
+                  <SelectItem value="in-stock">En stock</SelectItem>
+                  <SelectItem value="out-of-stock">Rupture</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              {/* Bouton reset */}
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  setSearchTerm('')
+                  setSortBy('name')
+                  setFilterStock('all')
+                }}
+              >
+                Réinitialiser
+              </Button>
             </div>
             
-            {/* Statistiques */}
+            {/* Résultats et pagination info */}
             <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-              <div className="flex items-center space-x-4 text-sm text-gray-600">
-                <span>{filteredProducts.length} {dict.products.categoryPage.productsDisplayed}</span>
-                <span>•</span>
-                <span>{filteredProducts.filter(p => p.qty_available > 0).length} {dict.products.categoryPage.inStockCount}</span>
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-gray-600">
+                  {filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''} trouvé{filteredProducts.length > 1 ? 's' : ''}
+                </span>
+                {totalPages > 1 && (
+                  <span className="text-sm text-gray-500">
+                    Page {currentPage} sur {totalPages}
+                  </span>
+                )}
+                {searchTerm && (
+                  <Badge variant="secondary" className="text-xs">
+                    Recherche: "{searchTerm}"
+                  </Badge>
+                )}
               </div>
-              
-              <Badge variant="outline" className="text-[#085C91] border-[#085C91]">
-                {category.name}
-              </Badge>
+              <BarChart3 className="h-5 w-5 text-gray-400" />
             </div>
           </div>
 
           {/* Grille des produits */}
-          <div className="min-h-[600px]">
-            {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {filteredProducts.map((product) => (
-                  <Card 
-                    key={product.id} 
-                    className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg overflow-hidden bg-white h-full flex flex-col"
-                  >
-                    <CardContent className="p-0 flex flex-col h-full">
-                      {/* Image du produit ou logo SOFIMED */}
-                      <div className="relative h-56 w-full overflow-hidden bg-gray-50 flex items-center justify-center flex-shrink-0">
-                        {product.image ? (
-                          <img 
-                            src={`data:image/jpeg;base64,${product.image}`}
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            {currentProducts.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {currentProducts.map((product) => (
+                    <Card key={product.id} className="overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300 h-full flex flex-col border border-gray-200">
+                      <CardContent className="p-0 flex flex-col h-full">
+                        {/* Image du produit */}
+                        <div className="h-64 w-full bg-gray-50 flex items-center justify-center relative overflow-hidden">
+                          <Image 
+                            src={getImageSrc(product)}
                             alt={product.name}
-                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-2"
-                            style={{
-                              imageRendering: 'high-quality'
-                            }}
+                            fill
+                            className="object-contain p-4 transition-transform duration-300 hover:scale-105"
+                            quality={95}
+                            priority={currentPage === 1}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                             onError={(e) => {
-                              e.currentTarget.src = '/images/sofimed-logo.png'
-                              e.currentTarget.className = 'h-24 w-auto object-contain opacity-60 p-4'
+                              const target = e.target as HTMLImageElement
+                              target.src = '/images/sofimed-logo.png'
                             }}
                           />
-                        ) : (
-                          <img 
-                            src="/images/sofimed-logo.png"
-                            alt="SOFIMED Logo"
-                            className="h-24 w-auto object-contain opacity-60 p-4"
-                            style={{
-                              imageRendering: 'high-quality'
-                            }}
-                          />
-                        )}
-                      </div>
-                      
-                      <div className="p-6 flex-1 flex flex-col">
-                        {/* En-tête du produit */}
-                        <div className="mb-4">
-                          <h3 className="font-bold text-lg mb-2 text-gray-800 group-hover:text-[#085C91] transition-colors line-clamp-2 min-h-[3.5rem]">
-                            {product.name}
-                          </h3>
+                        </div>
+                        
+                        {/* Contenu */}
+                        <div className="p-6 flex-1 flex flex-col">
+                          {/* En-tête */}
+                          <div className="mb-4">
+                            <h3 className="font-semibold text-lg text-gray-900 mb-2 line-clamp-2 leading-tight">
+                              {product.name}
+                            </h3>
+                            {product.default_code && (
+                              <p className="text-sm text-gray-500 mb-2">Réf: {product.default_code}</p>
+                            )}
+                          </div>
                           
-                          {product.default_code && (
-                            <p className="text-sm text-gray-500 mb-2">
-                              {dict.products.categoryPage.reference} {product.default_code}
-                            </p>
+                          {/* Description avec plus de caractères */}
+                          {product.description && (
+                            <div className="flex-1 mb-4">
+                              <p className="text-sm text-gray-600 line-clamp-5 leading-relaxed">
+                                {product.description.length > 200 
+                                  ? product.description.substring(0, 200) + '...' 
+                                  : product.description
+                                }
+                              </p>
+                            </div>
                           )}
                           
-                          <p className="text-xs text-blue-600 mb-2">
-                            {product.categ_id[1]}
-                          </p>
-                        </div>
-                        
-                        {/* Description */}
-                        {product.description && (
-                          <div className="mb-4 flex-1">
-                            <p className="text-sm text-gray-600 line-clamp-3">
-                              {product.description}
-                            </p>
+                          {/* Action */}
+                          <div className="mt-auto">
+                            <Button 
+                              className="w-full bg-[#085C91] hover:bg-blue-700 transition-colors duration-200"
+                            >
+                              Voir détails
+                            </Button>
                           </div>
-                        )}
-                        
-                        {/* Stock et bouton - toujours en bas */}
-                        <div className="mt-auto">
-                          <div className="flex items-center justify-center mb-4">
-                            <div className="flex items-center">
-                              {product.qty_available > 0 ? (
-                                <>
-                                  <CheckCircle className="h-4 w-4 text-green-500 mr-1" />
-                                  <span className="text-sm text-green-600 font-medium">
-                                    {product.qty_available} {dict.products.categoryPage.inStockCount}
-                                  </span>
-                                </>
-                              ) : (
-                                <>
-                                  <XCircle className="h-4 w-4 text-red-500 mr-1" />
-                                  <span className="text-sm text-red-600 font-medium">
-                                    {dict.products.categoryPage.outOfStock}
-                                  </span>
-                                </>
-                              )}
-                            </div>
-                          </div>
-                          
-                          {/* Bouton d'action */}
-                          <Button 
-                            className="w-full bg-[#085C91] hover:bg-[#064a7a] text-white transition-colors"
-                            disabled={product.qty_available <= 0}
-                          >
-                            {product.qty_available > 0 ? dict.products.categoryPage.viewDetails : dict.products.categoryPage.productUnavailable}
-                          </Button>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+                
+                {/* Pagination */}
+                {totalPages > 1 && <Pagination />}
+              </>
             ) : (
               <div className="text-center py-12">
-                <Package className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-500 mb-2">
-                  {searchTerm ? dict.products.categoryPage.noProductsFound : dict.products.categoryPage.noProductsAvailable}
+                <div className="w-24 h-24 mx-auto mb-4 relative">
+                  <Image 
+                    src="/images/sofimed-logo.png" 
+                    alt="Sofimed Logo" 
+                    fill
+                    className="object-contain opacity-50"
+                  />
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                  Aucun produit trouvé
                 </h3>
-                <p className="text-gray-400">
-                  {searchTerm 
-                    ? dict.products.categoryPage.tryModifySearch
-                    : dict.products.categoryPage.noCategoryProducts}
+                <p className="text-gray-600 mb-4">
+                  Aucun produit ne correspond à vos critères de recherche.
                 </p>
-                {searchTerm && (
-                  <Button 
-                    variant="outline" 
-                    onClick={() => setSearchTerm('')}
-                    className="mt-4 border-[#085C91] text-[#085C91] hover:bg-[#085C91] hover:text-white"
-                  >
-                    {dict.products.categoryPage.clearSearch}
-                  </Button>
-                )}
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setSearchTerm('')
+                    setFilterStock('all')
+                  }}
+                >
+                  Effacer les filtres
+                </Button>
               </div>
             )}
           </div>
-        </>
-      )}
-    </section>
+        </section>
+      </div>
+    </>
   )
 }

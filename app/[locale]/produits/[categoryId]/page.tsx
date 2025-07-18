@@ -3,8 +3,10 @@ import { notFound } from 'next/navigation'
 import { getCategories, getProducts, authenticate, odoo } from '@/lib/odoo'
 import ProductsClient from './components/ProductsClient'
 import { Loader2 } from 'lucide-react'
+import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { getDictionary } from '../../dictionaries'
+import Image from 'next/image'
 
 interface Product {
   id: number
@@ -25,12 +27,44 @@ interface Category {
   child_ids?: number[]
 }
 
-function LoadingComponent() {
+function LoadingComponent({ dict }: { dict: any }) {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="fixed inset-0 bg-white z-[99999] flex items-center justify-center">
       <div className="text-center">
-        <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-[#085C91]" />
-        <p className="text-gray-600">Chargement des produits...</p>
+        {/* Roulette de chargement principale */}
+        <div className="relative mb-8">
+          <div className="w-24 h-24 border-4 border-gray-200 border-t-[#085C91] rounded-full animate-spin mx-auto"></div>
+          <div className="absolute inset-0 w-24 h-24 border-4 border-transparent border-r-blue-300 rounded-full animate-spin mx-auto" style={{animationDirection: 'reverse', animationDuration: '1.5s'}}></div>
+        </div>
+        
+        {/* Logo Sofimed */}
+        <div className="w-20 h-20 mx-auto mb-6 relative">
+          <Image 
+            src="/images/sofimed-logo.png" 
+            alt="Sofimed Logo" 
+            fill
+            className="object-contain"
+          />
+        </div>
+        
+        {/* Texte de chargement */}
+        <h2 className="text-3xl font-bold text-gray-800 mb-3">Chargement des produits</h2>
+        <p className="text-gray-600 mb-8 text-lg">Veuillez patienter...</p>
+        
+        {/* Points animés */}
+        <div className="flex justify-center space-x-2 mb-8">
+          <div className="w-4 h-4 bg-[#085C91] rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+          <div className="w-4 h-4 bg-[#085C91] rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+          <div className="w-4 h-4 bg-[#085C91] rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+        </div>
+        
+        {/* Barre de progression simulée */}
+        <div className="w-80 h-3 bg-gray-200 rounded-full mx-auto overflow-hidden">
+          <div className="h-full bg-gradient-to-r from-[#085C91] to-blue-400 rounded-full animate-pulse transition-all duration-1000" style={{width: '75%'}}></div>
+        </div>
+        
+        {/* Message additionnel */}
+        <p className="text-sm text-gray-500 mt-6">Préparation de votre catalogue...</p>
       </div>
     </div>
   )
@@ -144,10 +178,12 @@ export default async function CategoryProductsPage({
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">Erreur</h1>
-          <p className="text-gray-600">{error}</p>
+      <div className="min-h-screen bg-gray-50">
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-red-600 mb-4">Erreur</h1>
+            <p className="text-gray-600">{error}</p>
+          </div>
         </div>
       </div>
     )
@@ -175,39 +211,19 @@ export default async function CategoryProductsPage({
             <p className="text-xl md:text-2xl opacity-90 leading-relaxed max-w-3xl mx-auto">
               {products.length} produit{products.length > 1 ? 's' : ''} disponible{products.length > 1 ? 's' : ''}
             </p>
-            
-            {/* Affichage des sous-catégories */}
-            {subCategories.length > 0 && (
-              <div className="mt-8">
-                <h2 className="text-2xl font-semibold mb-4">Sous-catégories :</h2>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  {subCategories.map((subCat) => (
-                    <div
-                      key={subCat.id}
-                      className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/30 hover:bg-white/30 transition-colors duration-300"
-                    >
-                      <span className="font-medium">{subCat.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>
 
       {/* Products Section */}
-      <Suspense fallback={<LoadingComponent />}>
+      <Suspense fallback={<LoadingComponent dict={dict} />}>
         <ProductsClient 
           initialProducts={products} 
           category={category}
           subCategories={subCategories}
-          // params={params} // Supprimer cette ligne
           dict={dict}
         />
       </Suspense>
-      
-      {/* <Footer /> */}
     </div>
   )
 }

@@ -35,11 +35,11 @@ export default function CategoriesClient({
   const [internalLoading, setInternalLoading] = useState(true)
   const params = useParams()
   
-  // Simuler un délai de chargement initial
+  // Réduire le délai de chargement initial
   useEffect(() => {
     const timer = setTimeout(() => {
       setInternalLoading(false)
-    }, 800)
+    }, 200) // Réduit de 800ms à 200ms
     return () => clearTimeout(timer)
   }, [])
 
@@ -89,7 +89,32 @@ export default function CategoriesClient({
   )
 
   if (internalLoading || isLoading) {
-    return <LoadingSpinner />
+    return (
+      <div className="space-y-8">
+        {/* Search Bar Skeleton */}
+        <div className="max-w-md mx-auto">
+          <div className="h-12 bg-gray-200 rounded-xl animate-pulse"></div>
+        </div>
+        
+        {/* Categories Skeleton */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {[...Array(8)].map((_, index) => (
+            <Card key={index} className="overflow-hidden bg-white h-full flex flex-col">
+              <CardContent className="p-0 flex flex-col h-full">
+                <div className="h-64 w-full bg-gray-200 animate-pulse"></div>
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="h-6 bg-gray-200 rounded mb-3 animate-pulse"></div>
+                    <div className="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
+                  </div>
+                  <div className="h-10 bg-gray-200 rounded animate-pulse mt-4"></div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    )
   }
 
   return (

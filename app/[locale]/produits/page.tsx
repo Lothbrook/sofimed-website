@@ -12,7 +12,7 @@ import { getCategories, authenticate } from '@/lib/odoo'
 import CategoriesClient from './components/CategoriesClient'
 import { Suspense } from 'react'
 import { getDictionary } from '../dictionaries'
-// import { Loader2 } from "lucide-react"
+// import { Loader2, ArrowLeft } from "lucide-react"
 
 interface Category {
   id: number
@@ -26,6 +26,7 @@ interface Category {
 function LoadingComponent({ dict }: { dict: any }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/*<Header dict={dict} locale={dict.locale} />*/}
       {/* Hero Section Skeleton */}
       <section className="min-h-[60vh] relative flex items-center justify-center overflow-hidden bg-gray-300 animate-pulse">
         <div className="absolute inset-0 bg-black/50" />
@@ -49,34 +50,11 @@ function LoadingComponent({ dict }: { dict: any }) {
           </div>
         </div>
       </section>
+      {/* <Footer dict={dict} locale={dict.locale} /> */}
     </div>
   )
 }
 
-// Composant d'erreur
-function ErrorComponent({ error }: { error: string }) {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-center max-w-md mx-auto p-6">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-            <h3 className="text-red-800 font-semibold mb-2">{dict.products.categories.noCategories}</h3>
-          </div>
-          <a 
-            href="/produits" 
-            className="inline-block bg-[#085C91] hover:bg-[#064a7a] text-white px-4 py-2 rounded-lg transition-colors"
-          >
-            Réessayer
-          </a>
-        </div>
-      </div>
-      {/* <Footer /> */}
-    </div>
-  )
-}
-
-// Fonction pour récupérer les données côté serveur
 // Ajouter un cache simple
 const categoriesCache = new Map()
 
@@ -124,6 +102,7 @@ export default async function ProduitsPage({
   if (error) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+        {/* <Header dict={dict} locale={params.locale} /> */}
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="text-center max-w-md mx-auto p-6">
             <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
@@ -138,12 +117,15 @@ export default async function ProduitsPage({
             </a>
           </div>
         </div>
+        {/* <Footer dict={dict} locale={params.locale} /> */}
       </div>
     )
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* <Header dict={dict} locale={params.locale} /> */}
+      
       {/* Hero Section with Background Image */}
       <section 
         className="min-h-[60vh] relative flex items-center justify-center overflow-hidden"
@@ -187,6 +169,8 @@ export default async function ProduitsPage({
           </Suspense>
         </div>
       </section>
+      
+      {/* <Footer dict={dict} locale={params.locale} /> */}
     </div>
   )
 }
